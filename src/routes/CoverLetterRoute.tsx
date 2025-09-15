@@ -1,7 +1,7 @@
 
 const CoverLetterRoute = () => {
   return (
-    <div className="text-center">Coming Soon!</div>
+    <div className="text-center">Coming Soon!!</div>
   )
 }
 
