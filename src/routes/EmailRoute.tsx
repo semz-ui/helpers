@@ -1,5 +1,4 @@
 import EmailEdit from "@/components/email/EmailEdit";
-import EmailInput from "@/components/email/EmailInput";
 import SelectComponent from "@/components/SelectComponent";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
