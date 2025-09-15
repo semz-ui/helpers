@@ -14,7 +14,7 @@ const EmailEdit = ({body_res,subject_res,to_res, set_body_res, set_subject_res, 
         <div className="my-4 border border-gray-200 rounded-lg p-2">
             <div className="flex flex-col gap-2 mb-4">
                 <div>
-                    <p>To</p>
+                    <p className="mb-1">To</p>
                     <EmailInput
                         content={to_res}
                         set_content={set_to_res}
@@ -22,7 +22,7 @@ const EmailEdit = ({body_res,subject_res,to_res, set_body_res, set_subject_res, 
                     />
                 </div>
                 <div>
-                    <p>Subject</p>
+                    <p className="mb-1">Subject</p>
                     <EmailInput
                         content={subject_res}
                         set_content={set_subject_res}
@@ -30,7 +30,7 @@ const EmailEdit = ({body_res,subject_res,to_res, set_body_res, set_subject_res, 
                     />
                 </div>
                 <div>
-                    <p>Mail Body</p>
+                    <p className="mb-1">Mail Body</p>
                      <Textarea
                      onChange={(e) => set_body_res(e.target.value)}
                         value={body_res}

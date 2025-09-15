@@ -14,7 +14,7 @@ const SideBar = ({
       <div className="flex md:flex-col  flex-row  md:gap-4 gap-4 px-4 md:mt-4 mt-0">
         <p
           onClick={() => handleRouteChange("email")}
-          className={`text-lg md:px-4 px-0 py-1 rounded cursor-pointer ${
+          className={`text-lg md:px-8 px-0 py-1 rounded cursor-pointer ${
             route === "email" &&
             "bg-white md:bg-blue-100 text-blue-400 md:text-black"
           }`}

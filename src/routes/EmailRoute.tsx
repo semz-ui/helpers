@@ -121,20 +121,20 @@ const EmailRoute = () => {
         />
         <div className="flex mt-4 justify-end gap-4">
           <Button
-            className="bg-blue-400 hover:bg-blue-300 py-6 px-4 rounded-lg cursor-pointer"
+            className="bg-blue-400 hover:bg-blue-300 font-bold py-6 px-4 rounded-lg cursor-pointer"
             onClick={handleGenerate}
           >
             Regenerate
           </Button>
           <Button
             onClick={handleCopy}
-            className="px-4 py-6 hover:bg-gray-200 cursor-pointer bg-white text-black border border-gray-300"
+            className="px-4 py-6 hover:bg-gray-200 cursor-pointer font-bold bg-white text-black border border-gray-300"
           >
             Copy
           </Button>
           <Button
             onClick={handleOpenEmailClient}
-            className="px-4 py-6 hover:bg-gray-200 cursor-pointer bg-white text-black border border-gray-300"
+            className="px-4 py-6 hover:bg-gray-200 font-bold cursor-pointer bg-white text-black border border-gray-300"
           >
             Open Mail
           </Button>
