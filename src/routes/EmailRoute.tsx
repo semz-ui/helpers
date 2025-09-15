@@ -3,6 +3,7 @@ import EmailInput from "@/components/email/EmailInput";
 import SelectComponent from "@/components/SelectComponent";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Textarea } from "@/components/ui/textarea";
 import {
   lengthTypes,
   promptHelper,
@@ -78,9 +79,11 @@ const EmailRoute = () => {
       <div className="mx-4 w-full border border-gray-300 rounded-lg p-6">
         <h2 className="text-center font-bold text-lg mb-4">Mailer</h2>
         {
-          loading ? <Skeleton className="w-full border py-4 px-2 rounded-lg" /> : <EmailInput
-          content={content}
-          set_content={set_content}
+          loading ? <Skeleton className="w-full border py-4 px-2 rounded-lg" /> : <Textarea
+          value={content}
+          onChange={
+            (e) => set_content(e.target.value)
+          }
           placeholder="Describe what your email is about"
         />
         }
