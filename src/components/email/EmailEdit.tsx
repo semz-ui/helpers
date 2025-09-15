@@ -1,15 +1,13 @@
-import { useState } from "react";
+
 import EmailInput from "./EmailInput";
 import { Textarea } from "../ui/textarea";
 
-const EmailEdit = ({body_res,subject_res,to_res,word_res, set_body_res, set_subject_res, set_word_res, set_to_res}:{
+const EmailEdit = ({body_res,subject_res,to_res, set_body_res, set_subject_res, set_to_res}:{
     body_res:string,
     subject_res:string,
     to_res:string,
-    word_res:string
     set_body_res:React.Dispatch<React.SetStateAction<string>>,
     set_subject_res:React.Dispatch<React.SetStateAction<string>>,
-    set_word_res:React.Dispatch<React.SetStateAction<string>>,
     set_to_res:React.Dispatch<React.SetStateAction<string>>,
 }) => {
     return (

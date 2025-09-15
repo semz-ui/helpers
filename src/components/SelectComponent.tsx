@@ -6,17 +6,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { useState } from "react";
 
 const SelectComponent = ({
   label,
   data,
-  value,
   set_value,
 }: {
   label: string | promptType;
   data: PromptTypes[];
-    value: string;
     set_value: any;
 }) => {
   return (
