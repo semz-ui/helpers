@@ -35,7 +35,7 @@ const EmailEdit = ({body_res,subject_res,to_res, set_body_res, set_subject_res, 
                      onChange={(e) => set_body_res(e.target.value)}
                         value={body_res}
                         placeholder=""
-                        className="max-h-[200px]"
+                        className="max-h-[400px] min-h-[200px] h-auto overflow-y-auto"
                     />
                 </div>
             </div>

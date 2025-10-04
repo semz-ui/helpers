@@ -1,3 +1,4 @@
+"use client"
 import EmailEdit from "@/components/email/EmailEdit";
 import SelectComponent from "@/components/SelectComponent";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,7 @@ import { type promptType } from "@/types";
 import { GoogleGenAI } from "@google/genai";
 import { useState } from "react";
 import { toast } from "sonner";
+import Title from "../Title";
 
 const EmailRoute = () => {
   const [content, set_content] = useState("");
@@ -22,25 +24,25 @@ const EmailRoute = () => {
   const [tone, set_tone] = useState<promptType>("formal");
   const [length, set_length] = useState("medium");
   const [loading, set_loading] = useState<boolean>(false);
-  const GEMINI_API_KEY = import.meta.env.VITE_API_KEY;
-  const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
   // const handleOpenEmailClient = () => {
   //   window.location.href = "mailto:";
   // };
   const handleGenerate = async () => {
     set_loading(true);
     try {
-      const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash-001",
-      contents: content,
-      config: {
-        systemInstruction: `Generate an email: ${promptHelper[tone]} and ${length} in length. also separate the subject, body and to (email if added) with different params do not make it a json object just a string with the params To:, Subject: and Body:`,
-      },
-    });
-    const seperated = separateResponseText(response.text || "");
-    set_body_res(seperated.body);
-    set_subject_res(seperated.subject);
-    set_to_res(seperated.to);
+     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/mail/generate-mail`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content, tone, length }),
+      });
+      if (!res.ok) {
+        throw new Error("Failed to generate content");
+      }
+      const data = await res.json();
+      const separatedText = separateResponseText(data.summary);
+      set_body_res(separatedText.body);
+      set_subject_res(separatedText.subject);
+      set_to_res(separatedText.to);
     } catch (error) {
       console.log(error);
     } finally {
@@ -75,7 +77,10 @@ const EmailRoute = () => {
   return (
     <div className="w-full min-h-dvh flex justify-center items-center">
       <div className="mx-4 w-full border border-gray-300 rounded-lg p-6">
-        <h2 className="text-center font-bold text-lg mb-4">Mailer</h2>
+        <Title title="Email Generator" />
+        <p className="text-center mb-4 text-sm text-gray-600">
+          Generate professional emails in seconds using AI.
+        </p>
         {
           loading ? <Skeleton className="w-full border py-4 px-2 rounded-lg" /> : <Textarea
           value={content}
@@ -105,11 +110,13 @@ const EmailRoute = () => {
         <Button
           className="w-full hover:bg-blue-300 bg-blue-400 py-6 px-2 rounded-lg mt-4 cursor-pointer"
           onClick={handleGenerate}
-          disabled={loading}
+          disabled={
+            loading || content.length === 0 || set_tone.length === 0 || set_length.length === 0
+          }
         >
           Generate
         </Button>
-        <EmailEdit
+       {body_res && <> <EmailEdit
           body_res={body_res}
           subject_res={subject_res}
           to_res={to_res}
@@ -136,7 +143,9 @@ const EmailRoute = () => {
           >
             Open Mail
           </Button>
-        </div>
+        </div></>
+        }
+        
       </div>
     </div>
   );
