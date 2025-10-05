@@ -6,6 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import { Dispatch, SetStateAction } from "react";
 
 const SelectComponent = ({
   label,
@@ -14,12 +15,12 @@ const SelectComponent = ({
 }: {
   label: string | promptType;
   data: PromptTypes[];
-    set_value: any;
+    set_value: Dispatch<SetStateAction<string | promptType>>;
 }) => {
   return (
     <div className="w-full">
       <p className="mb-1">{label}</p>
-      <Select onValueChange={(val) => set_value(val)}>
+      <Select onValueChange={(val:promptType) => set_value(val)}>
         <SelectTrigger className="w-full">
           <SelectValue placeholder={data[0].label || ""} />
         </SelectTrigger>

@@ -19,8 +19,8 @@ const EmailRoute = () => {
   const [body_res, set_body_res] = useState("");
   const [subject_res, set_subject_res] = useState("");
   const [to_res, set_to_res] = useState("");
-  const [tone, set_tone] = useState<promptType>("formal");
-  const [length, set_length] = useState("medium");
+  const [tone, set_tone] = useState<string>("formal");
+  const [length, set_length] = useState<string>("medium");
   const [loading, set_loading] = useState<boolean>(false);
   // const handleOpenEmailClient = () => {
   //   window.location.href = "mailto:";
