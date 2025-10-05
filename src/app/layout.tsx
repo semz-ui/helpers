@@ -4,10 +4,6 @@ import "./globals.css";
 import SideBar from "@/components/Sidebar";
 import ReactQueryProvider from "@/provider/ReactQueryProvider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",

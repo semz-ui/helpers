@@ -6,12 +6,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Textarea } from "@/components/ui/textarea";
 import {
   lengthTypes,
-  promptHelper,
   promptTypes,
   separateResponseText,
 } from "@/helpers/prompt";
 import { type promptType } from "@/types";
-import { GoogleGenAI } from "@google/genai";
 import { useState } from "react";
 import { toast } from "sonner";
 import Title from "../Title";
