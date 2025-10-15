@@ -9,7 +9,6 @@ import {
   promptTypes,
   separateResponseText,
 } from "@/helpers/prompt";
-import { type promptType } from "@/types";
 import { useState } from "react";
 import { toast } from "sonner";
 import Title from "../Title";
